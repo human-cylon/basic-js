@@ -2,8 +2,7 @@ const CustomError = require("../extensions/custom-error");
 
 class VigenereCipheringMachine {
   constructor(direct) {
-    if (direct == true || direct == undefined) {this.direct = true;}
-    else {this.direct == false;}
+    this.direct = direct;
   }
   encrypt(message, key) {
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -38,7 +37,8 @@ class VigenereCipheringMachine {
     for (let i = 0; i < message.length; i++) {
       if (/\W|\s|[0-9]/g.test(message[i])) {messageEnc.splice(i, 0, message[i]);}
     }
-    return messageEnc.join("");
+    if (this.direct == false) {return messageEnc.reverse().join("");}
+    else {return messageEnc.join("");}
     
   }      
   decrypt(encryptedMessage, key) {
@@ -50,9 +50,10 @@ class VigenereCipheringMachine {
     let n;
 
     if (encryptedMessage == undefined || key == undefined) {throw new Error;}
+
     messageReady = encryptedMessage.replace(/\s|\W|[0-9]/g, "").split("");
     key = key.toUpperCase().split("")
-    
+
     for (let i = 0; i < messageReady.length; i++) {
       
       if (i % key.length == 0) {n = i / key.length;}
@@ -72,7 +73,9 @@ class VigenereCipheringMachine {
     for (let i = 0; i < encryptedMessage.length; i++) {
       if (/\W|\s|[0-9]/g.test(encryptedMessage[i])) {messageDec.splice(i, 0, encryptedMessage[i]);}
     }
-    return messageDec.join("");
+    
+    if (this.direct == false) {return messageDec.reverse().join("");}
+      else {return messageDec.join("");}
   }
 }
 
