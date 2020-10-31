@@ -16,7 +16,6 @@ const chainMaker = {
       return this;
     },
     reverseChain() {
-      console.log(arr);
       arr.reverse();
       return this;
     },

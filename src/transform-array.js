@@ -6,7 +6,6 @@ module.exports = function transform(arr) {
 
   if (Array.isArray(arr) === false) {throw Error;}
   for (let i = 0; i < interm.length; i++) {
-    // console.log("hi!");
     if (typeof interm[i] === "string" && interm[i].includes("--")) {
       switch (interm[i]) {
         case "--discard-next":
@@ -57,7 +56,6 @@ module.exports = function transform(arr) {
   //   }
   // }
   
-  console.log(interm);
 
   // for (let i = 0; i < arr.length; i++) {
   //   if (typeof arr[i] === "string" && arr[i].includes("--")) {

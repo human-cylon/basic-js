@@ -14,8 +14,8 @@ class VigenereCipheringMachine {
 
     if (message == undefined || key == undefined) {throw new Error;}
     
-    console.log(messageReady = message.toUpperCase().replace(/\s|\W|[0-9]/g, "").split(""));
-    console.log(key = key.toUpperCase().split(""));
+    messageReady = message.toUpperCase().replace(/\s|\W|[0-9]/g, "").split("");
+    key = key.toUpperCase().split("");
     
     for (let i = 0; i < messageReady.length; i++) {
 
@@ -25,13 +25,11 @@ class VigenereCipheringMachine {
       } else {
           keyReady.push(key[i]);
       }
-      // console.log(keyReady)
     }
     
     for (let i = 0; i < keyReady.length; i++) {
       tabula = alphabet.slice(alphabet.indexOf(keyReady[i])) + alphabet.slice(0, alphabet.indexOf(keyReady[i]));
-      messageEnc.push(tabula[alphabet.indexOf(messageReady[i])]);
-      console.log(messageEnc); 
+      messageEnc.push(tabula[alphabet.indexOf(messageReady[i])]); 
     }
 
     for (let i = 0; i < message.length; i++) {
@@ -62,7 +60,6 @@ class VigenereCipheringMachine {
       } else {
         keyReady.push(key[i]);
       }
-      // console.log(keyReady)
     }
 
     for (let i = 0; i < keyReady.length; i++) {
